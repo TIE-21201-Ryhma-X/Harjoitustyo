@@ -5,13 +5,13 @@ Library 	RequestsLibrary
 *** Variables ***
 # These should be moved to resoursce file so they can be used in all files
 ${HOST}        http://picture.app:8080/ps
-${username}    username
+${username}    user
 ${password}    password
+${auth}=  Create List  ${username}   ${password}
 
 *** Test Cases ***
 GET swagger ui
     [Documentation]                         Test if we can get swagger Ui
-    ${auth}=  Create List  ${username}   ${password}
     ${headers}=    Create Dictionary    accept=application/json
     Create Session    picture-app    ${HOST}     headers=${headers}
     ${resp}=            Get Request         picture-app 	    /swagger-ui.html
