@@ -1,0 +1,11 @@
+version: '3'
+
+
+services:
+  picutre.app:
+    build:
+      context: ./picture-app/
+      dockerfile: Dockerfile
+    restart: unless-stopped
+    ports:
+      - 8080:8080
