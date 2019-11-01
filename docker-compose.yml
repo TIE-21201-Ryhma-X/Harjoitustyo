@@ -19,3 +19,13 @@ services:
       - "./robotframework/reports:/reports"
     depends_on:
       - "picture.app"
+
+  model.test:
+    build:
+      context: ./robomachine/
+      dockerfile: Dockerfile
+    volumes:
+      - "./robomachine/testsuite:/testsuite"
+      - "./robomachine/reports:/reports"
+    depends_on:
+      - "picture.app"

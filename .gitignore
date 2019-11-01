@@ -1,2 +1,4 @@
 robotframework/reports/*
 **.DS_Store
+**.html
+**.xml
