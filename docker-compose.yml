@@ -26,7 +26,6 @@ services:
       dockerfile: Dockerfile
     volumes:
       - "./robomachine/testsuite:/testsuite"
-      - "./robomachine/reports:/reports"
     depends_on:
       - "picture.app"
 

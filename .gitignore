@@ -1,5 +1,8 @@
 robotframework/reports/*
 robotframework-selenium/reports/*
+robomachine/testsuite/*.html
+robomachine/testsuite/*.robot
 **.DS_Store
 **.html
 **.xml
+

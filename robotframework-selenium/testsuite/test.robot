@@ -32,5 +32,5 @@ Submit Credentials
     Click Button    id: album-login
 
 Album Page Should Be Open
-    Title Should Be    Photo Album
+    Element Should Be Visible   id = view-list     
 # options=add_argument("--headless");add_argument("--no-sandbox")
