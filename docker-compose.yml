@@ -29,3 +29,13 @@ services:
       - "./robomachine/reports:/reports"
     depends_on:
       - "picture.app"
+
+  selenium.test:
+    build:
+      context: ./robotframework-selenium/
+      dockerfile: Dockerfile
+    volumes:
+      - "./robotframework-selenium/testsuite:/testsuite"
+      - "./robotframework-selenium/reports:/reports"
+    depends_on:
+      - "picture.app"

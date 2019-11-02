@@ -49,4 +49,4 @@ RUN unzip -o /usr/local/bin/chromedriver -d /usr/local/bin
 RUN chmod +x /usr/local/bin/chromedriver
 
 
-CMD ["robomachine", "--output", "testfile.robot", "--tests-max", "10", "--actions-max", "20", "--to-state", "'Welcome Page'", "--generation-algorithm", "random", "generator" ]
+CMD ["robomachine", "--tests-max", "10", "--actions-max", "20", "--to-state", "'Welcome Page'", "--generation-algorithm", "random", "generator.robomachine" ]
