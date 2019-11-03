@@ -16,4 +16,4 @@ RUN pip install RoboMachine
 RUN mkdir /testsuite
 WORKDIR /testsuite
 
-CMD ["robomachine", "--tests-max", "10", "--actions-max", "20", "--to-state", "'Welcome Page'", "--generation-algorithm", "random", "generator.robomachine" ]
+CMD ["robomachine", "--tests-max", "10", "--actions-max", "20", "--generation-algorithm", "random", "generator.robomachine" ]

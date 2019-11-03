@@ -1,5 +1,5 @@
 *** Settings ***
-Suite Setup       Open Browser  ${LOGIN_PAGE_URL}   Chrome
+Suite Setup       Open Browser  ${LOGIN_PAGE_URL}   Chrome      options=add_argument("--headless");add_argument("--no-sandbox")
 Suite Teardown    Close Browser
 Test Setup        Go to  ${LOGIN_PAGE_URL}
 Library           SeleniumLibrary
