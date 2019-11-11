@@ -13,23 +13,46 @@ ${VALID_PASSWORD}    password
 ${LOGIN_PAGE_URL}    http://picture.app:8080/ps/v1/index.html
 
 *** Machine ***
-${USERNAME}  any of  ${VALID_USERNAME}  ${VALID_PASSWORD}  invalid123  ${EMPTY}
-${PASSWORD}  any of  ${VALID_PASSWORD}  ${VALID_USERNAME}  password123  ${EMPTY}
-
-# Add an equivalence rule to reduce the number of generated tests
-${USERNAME} == ${VALID_PASSWORD}  <==>  ${PASSWORD} == ${VALID_USERNAME}
 
 Login Page
   Element Should Be Visible   id = login-window
   [Actions]
-    Submit Credentials  ==>    Album Page    when    ${USERNAME} == ${VALID_USERNAME}    and    ${PASSWORD} == ${VALID_PASSWORD}
-    Submit Credentials  ==>    Login Page    otherwise
+    Submit Valid Credentials  ==>    Album Page
+    Submit Invalid Credentials  ==>    Login Page
 
 Album Page
   Element Should Be Visible   id = view-list
+  [Actions]
+    Click Any Image  ==>    Picture Page
+
+Picture Page
+  Element Should Be Visible   id = view-full
+  [Actions]
+    Close Picture Page  ==>    Album Page
+    Open Next Image  ==>    Picture Page
+    Open Previous Image  ==>      Picture Page
 
 *** Keywords ***
+Submit Valid Credentials
+  Submit Credentials  ${VALID_USERNAME}  ${VALID_PASSWORD}
+
+Submit Invalid Credentials
+  Submit Credentials  invalid  invalid
+
 Submit Credentials
-  Input Text    id: input-username    ${username}
-  Input Text    id: input-password    ${password}
+  [Arguments]     ${username}        ${password}
+  Input Text    id: input-username    ${USERNAME}
+  Input Password    id: input-password    ${PASSWORD}
   Click Button    id: album-login
+
+Click Any Image
+  Click Element    css: img
+
+Close Picture Page
+  Click Element    id: view-full-close
+
+Open Next Image
+  Click Element    id: view-full-next
+
+Open Previous Image
+  Click Element    id: view-full-previous
