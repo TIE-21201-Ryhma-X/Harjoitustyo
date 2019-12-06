@@ -1,13 +1,15 @@
 *** Settings ***
 Documentation     Simple example using SeleniumLibrary.
 Library           SeleniumLibrary
+Library           OperatingSystem
 
 *** Variables ***
-${LOGIN URL}      http://picture.app:8080/ps/v1/index.html
+${LOGIN URL}      http://picture.app:8080/ps/%{GUI}/index.html
 ${BROWSER}        Chrome
 
 *** Test Cases ***
 Valid Login
+    LOG         ${LOGIN URL}
     Open Browser To Login Page
     Capture Page Screenshot
     Input Username    user

@@ -7,6 +7,9 @@ services:
       context: ./picture-app/
       dockerfile: Dockerfile
     restart: unless-stopped
+    environment:
+      - JAR=spring-swagger-codegen-photoservice-v1.jar
+    #  - JAR=spring-swagger-codegen-photoservice-v2.jar
     ports:
       - 8080:8080
 
@@ -26,6 +29,8 @@ services:
       dockerfile: Dockerfile
     volumes:
       - "./robomachine/testsuite:/testsuite"
+    environment:
+      - GUI=v1
     depends_on:
       - "picture.app"
 
@@ -36,5 +41,7 @@ services:
     volumes:
       - "./robotframework-selenium/testsuite:/testsuite"
       - "./robotframework-selenium/reports:/reports"
+    environment:
+      - GUI=v1
     depends_on:
       - "picture.app"
