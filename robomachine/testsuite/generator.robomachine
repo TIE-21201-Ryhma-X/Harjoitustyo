@@ -10,7 +10,7 @@ ${PASSWORD_FIELD}    input-password
 ${LOGIN_BUTTON}      album-login
 ${VALID_USERNAME}    user
 ${VALID_PASSWORD}    password
-${LOGIN_PAGE_URL}    http://picture.app:8080/ps/v1/index.html
+${LOGIN_PAGE_URL}    http://picture.app:8080/ps/%{GUI}/index.html
 
 *** Machine ***
 
