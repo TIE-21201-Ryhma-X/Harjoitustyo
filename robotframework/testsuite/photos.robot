@@ -21,7 +21,9 @@ GET future photos
     ${headers}=    Create Dictionary    accept=application/json
     Create Session    picture-app    ${HOST}     headers=${headers}     auth=${auth}     debug=5
 
-    ${date}=  Get Current Date  increment=1 hours
+    # TODO: Create timestamp dynamically in correct format
+    #${date}=  Get Current Date  increment=1 hours
+    ${date}=  Convert To String  2020-09-09T06:33:09+00:00
 
     ${params}=  Create Dictionary  from=${date}
 
