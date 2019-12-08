@@ -5,12 +5,11 @@ Test Setup        Go to  ${LOGIN_PAGE_URL}
 Library           SeleniumLibrary
 
 *** Variables ***
-${USERNAME_FIELD}    input-username
-${PASSWORD_FIELD}    input-password
-${LOGIN_BUTTON}      album-login
-${VALID_USERNAME}    user
-${VALID_PASSWORD}    password
-${LOGIN_PAGE_URL}    http://picture.app:8080/ps/%{GUI}/index.html
+${VALID_USERNAME}     user
+${VALID_PASSWORD}     password
+${LOGIN_PAGE_URL}     http://picture.app:8080/ps/%{GUI}/index.html
+${KEYWORDED}          -1
+${KEYWORD}            testasd
 
 *** Machine ***
 
@@ -23,7 +22,10 @@ Login Page
 Album Page
   Element Should Be Visible   id = view-list
   [Actions]
+    Search And Click    ==>    Picture Page
     Click Any Image  ==>    Picture Page
+    Next Page    ==>    Album Page
+    Previous Page   ==>    Album Page
 
 Picture Page
   Element Should Be Visible   id = view-full
@@ -31,6 +33,7 @@ Picture Page
     Close Picture Page  ==>    Album Page
     Open Next Image  ==>    Picture Page
     Open Previous Image  ==>      Picture Page
+    Set Keyword  ==>  Picture Page
 
 *** Keywords ***
 Submit Valid Credentials
@@ -45,6 +48,16 @@ Submit Credentials
   Input Password    id: input-password    ${PASSWORD}
   Click Button    id: album-login
 
+Set Keyword
+  Input Text    id: view-full-keywords    ${KEYWORD}
+  Click Element    id: view-full-save-keywords
+  ${KEYWORDED}=     Execute Javascript    return album.currentIndex
+
+Search And Click
+  Input Text    id: view-searchbar-keywords    ${KEYWORD}
+  Click Element    id: view-search
+  Click Element    css: img
+
 Click Any Image
   Click Element    css: img
 
@@ -56,3 +69,8 @@ Open Next Image
 
 Open Previous Image
   Click Element    id: view-full-previous
+
+Next Page
+  Click Element    id: view-previous
+Previous Page
+  Click Element    id: view-next

@@ -5,4 +5,5 @@ robomachine/testsuite/*.robot
 **.DS_Store
 **.html
 **.xml
-
+**.png
+**.jpg
